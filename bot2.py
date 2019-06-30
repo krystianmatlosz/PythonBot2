@@ -13,8 +13,20 @@ class Book:
     def __init__(self, title, authors, rating, read):
         self.title = title
         self.authors = authors
-        self.rating = rating
+        self.set_rating(rating)
+        #self.rating = rating       #zastąpione przez set_rating()
         self.read = read
+
+    def set_rating(self, value):
+        if value >= 1.0 and value <= 10.0:
+            self.rating = value
+
+    def set_read(self, value):
+        if value == "Yes":
+            self.read = True
+        else:
+            self.read = False
+ 
 
 """ 
 Constructor test
@@ -75,7 +87,10 @@ for index in range(len(shelve)):
 index = int(input("Indeks: "))
 
 book = shelve[index]
-book.rating = float(input("Chaning rate on: "))
+#book.rating = float(input("Chaning rate on: "))        #zastąpione book.set_rating()
+book.set_rating(float(input("Chaning rate on: ")))
+book.set_read(input("Is read?: "))
+
 
 for index in range(len(shelve)):
     print_book(index, shelve[index])
